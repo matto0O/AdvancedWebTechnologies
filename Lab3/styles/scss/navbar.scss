@@ -9,9 +9,10 @@
 }
 
 .navbar{
-
     background-size: cover;
     background-position: top;
+    background-color: $background-color;
+    background-image: linear-gradient(to top,white, #c9c7c7);
 
     
     .f_medium {
@@ -26,7 +27,6 @@
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 15px;
-        background-color: $background-color;
         border-bottom: 2px solid $theme-color;        
         .logo{
             @include dynamicFontSize($font-size-big-mult);
@@ -48,6 +48,7 @@
                     color: $text-color;
                     text-decoration: none;
                     font-weight: bold;
+                    font-family: $text-font;
                 }
 
                 a:hover{
@@ -60,6 +61,7 @@
         button{
             @extend .button-basic;
             background: $theme-color;
+            font-family: $text-font;
             transition: .4s;
         }
 

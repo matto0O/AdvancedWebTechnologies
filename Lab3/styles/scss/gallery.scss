@@ -26,13 +26,14 @@
 
     p{
         @include dynamicFontSize($font-size-medium-mult);
-        font-style: oblique;
+        font-family: $text-font;
         text-align: center;
     }
 
     button{
         @extend .button-basic;
         background-color: $theme-color;
+        font-family: $text-font;
     }
 }
 

@@ -1,0 +1,17 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $background-color;
+    background-image: linear-gradient(
+            white, #c9c7c7);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+
+.copyright {
+    @include dynamicFontSize($font-size-small-mult);
+    font-family: $text-font;
+}

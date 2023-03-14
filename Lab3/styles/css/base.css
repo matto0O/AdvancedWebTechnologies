@@ -11,9 +11,11 @@
 .navbar {
   background-size: cover;
   background-position: top;
+  background-color: white;
+  background-image: linear-gradient(to top, white, #c9c7c7);
 }
 .navbar .f_medium {
-  font-size: clamp(12px, 2.4vw, 24px);
+  font-size: clamp(11px, 2.2vw, 22px);
 }
 .navbar nav {
   display: flex;
@@ -23,7 +25,6 @@
   padding-left: 10%;
   padding-right: 10%;
   padding-bottom: 15px;
-  background-color: white;
   border-bottom: 2px solid #11c78a;
 }
 .navbar nav .logo {
@@ -43,6 +44,7 @@
   color: #000000;
   text-decoration: none;
   font-weight: bold;
+  font-family: "Poppins", sans-serif;
 }
 .navbar nav ul li a:hover {
   color: #11c78a;
@@ -50,6 +52,7 @@
 }
 .navbar nav button {
   background: #11c78a;
+  font-family: "Poppins", sans-serif;
   transition: 0.4s;
 }
 .navbar nav button:hover {
@@ -94,12 +97,13 @@
   object-fit: cover;
 }
 .card p {
-  font-size: clamp(12px, 2.4vw, 24px);
-  font-style: oblique;
+  font-size: clamp(11px, 2.2vw, 22px);
+  font-family: "Poppins", sans-serif;
   text-align: center;
 }
 .card button {
   background-color: #11c78a;
+  font-family: "Poppins", sans-serif;
 }
 
 .card:hover {
@@ -120,6 +124,26 @@
   .card {
     width: 50%;
   }
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  background-image: linear-gradient(white, #c9c7c7);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+
+.copyright {
+  font-size: clamp(8px, 1.6vw, 16px);
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0px 0px 8px 0px;
 }
 
 /*# sourceMappingURL=base.css.map */
