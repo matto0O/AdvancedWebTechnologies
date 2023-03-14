@@ -1,17 +1,65 @@
-/* Error: Undefined variable.
- *    ,
- * 18 |     box-shadow: 0 0 ($shadow-size*1.2) lighten($text-color, ($shadow-darkness/2));
- *    |                      ^^^^^^^^^^^^
- *    '
- *   styles/scss/gallery.scss 18:22  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 18 \2502      box-shadow: 0 0 ($shadow-size*1.2) lighten($text-color, ($shadow-darkness/2));\d\a    \2502                       ^^^^^^^^^^^^\a    \2575 \a   styles/scss/gallery.scss 18:22  root stylesheet";
+.card {
+  transition: all 0.2s ease-in-out;
 }
+
+.card:hover {
+  transform: scale(1.2);
+}
+
+.card button {
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.card-img, .card-button, .gallery {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery {
+  padding: 5%;
+}
+
+.card {
+  margin: 30px;
+  border-radius: 10px;
+  width: 25%;
+  box-shadow: 0 0 48px #666666;
+}
+.card img {
+  border-radius: 10px;
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.card p {
+  font-size: clamp(11px, 2.2vw, 22px);
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+.card button {
+  background-color: #11c78a;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-button {
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .gallery, .card-button, .card-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 50%;
+  }
+}
+
+/*# sourceMappingURL=gallery.css.map */

@@ -1,12 +1,4 @@
-.button-basic{
-    border: none;
-    padding: 12px 30px;
-    border-radius: 30px;
-    color:white;
-    font-weight: bold;
-    font-size: 15px;
-    transition: .4s;
-}
+@import 'button.scss';
 
 .navbar{
     background-size: cover;
@@ -59,7 +51,7 @@
         }
 
         button{
-            @extend .button-basic;
+            @extend %button-basic;
             background: $theme-color;
             font-family: $text-font;
             transition: .4s;

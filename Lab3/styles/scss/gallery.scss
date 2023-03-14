@@ -1,4 +1,6 @@
 @import 'growAnimation.scss';
+@import 'variables.scss';
+@import 'button.scss';
 
 %display-center {
     display: flex;
@@ -15,7 +17,7 @@
     margin: 30px;
     border-radius: 10px;
     width: 25%;
-    box-shadow: 0 0 ($shadow-size*1.2) lighten($text-color, ($shadow-darkness/2));
+    box-shadow: 0 0 calc($shadow-size * 1.2) lighten($text-color, calc($shadow-darkness / 2));
 
     img{
         border-radius: 10px;
@@ -31,15 +33,10 @@
     }
 
     button{
-        @extend .button-basic;
+        @extend %button-basic;
         background-color: $theme-color;
         font-family: $text-font;
     }
-}
-
-.card:hover{
-    box-shadow: 0 0 ($shadow-size*1.2) lighten($text-color, ($shadow-darkness/2));
-    transition: .5s;
 }
 
 .card-button {
