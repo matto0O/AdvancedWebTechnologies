@@ -1,0 +1,16 @@
+$theme-color: #11c78a;
+$text-color: #000000;
+$background-color: white;
+
+@mixin dynamicFontSize ($a) {
+    font-size: clamp(10px * $a, 2vw * $a, 20px * $a);
+}
+
+$font-size-small-mult: 0.8;
+$font-size-medium-mult: 1.2;
+$font-size-big-mult: 2;
+
+$shadow-size: 40px;
+$shadow-darkness: 80%;
+
+$title-font: "Bungee", sans-serif;

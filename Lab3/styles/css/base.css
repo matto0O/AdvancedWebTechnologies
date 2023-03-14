@@ -13,7 +13,7 @@
   background-position: top;
 }
 .navbar .f_medium {
-  font-size: 19px;
+  font-size: clamp(12px, 2.4vw, 24px);
 }
 .navbar nav {
   display: flex;
@@ -22,11 +22,14 @@
   justify-content: space-between;
   padding-left: 10%;
   padding-right: 10%;
-  background-color: #f6f87a;
+  padding-bottom: 15px;
+  background-color: white;
+  border-bottom: 2px solid #11c78a;
 }
 .navbar nav .logo {
-  color: #ec510a;
-  font-size: 28px;
+  font-size: clamp(20px, 4vw, 40px);
+  color: #11c78a;
+  font-family: "Bungee", sans-serif;
 }
 .navbar nav span {
   color: #11c78a;
@@ -54,28 +57,44 @@
   cursor: pointer;
 }
 
-.gallery {
-  padding-top: 50px;
-  padding-left: 50px;
+@media screen and (max-width: 992px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.card {
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.2);
+}
+
+.card-img, .card-button, .gallery {
   display: flex;
-  align-items: center;
+  justify-content: center;
+}
+
+.gallery {
+  padding: 5%;
 }
 
 .card {
+  margin: 30px;
   border-radius: 10px;
-  width: fit-content;
-  margin-left: 50px;
-  box-shadow: 0 0 40px #cccccc;
+  width: 25%;
+  box-shadow: 0 0 48px #666666;
 }
 .card img {
-  padding-top: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
-  max-height: 300px;
-  max-width: 80%;
+  border-radius: 10px;
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
 }
 .card p {
-  font-size: 19px;
+  font-size: clamp(12px, 2.4vw, 24px);
   font-style: oblique;
   text-align: center;
 }
@@ -86,6 +105,21 @@
 .card:hover {
   box-shadow: 0 0 48px #666666;
   transition: 0.5s;
+}
+
+.card-button {
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .gallery, .card-button, .card-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 50%;
+  }
 }
 
 /*# sourceMappingURL=base.css.map */

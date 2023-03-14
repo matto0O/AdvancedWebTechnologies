@@ -1,0 +1,10 @@
+{
+  "name": "lab3",
+  "version": "1.0.0",
+  "scripts": {
+    "scss": "sass --watch styles/scss/:styles/css/"
+  },
+  "devDependencies": {
+    "sass": "^1.59.2"
+  }
+}

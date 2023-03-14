@@ -15,7 +15,7 @@
 
     
     .f_medium {
-        font-size: $font-size-medium;
+        @include dynamicFontSize($font-size-medium-mult);
     }
 
     nav{
@@ -25,10 +25,13 @@
         justify-content: space-between;
         padding-left: 10%;
         padding-right: 10%;
-        background-color: $background-color;        
+        padding-bottom: 15px;
+        background-color: $background-color;
+        border-bottom: 2px solid $theme-color;        
         .logo{
-            color:$base-color;
-            font-size: 28px;
+            @include dynamicFontSize($font-size-big-mult);
+            color:$theme-color;
+            font-family: $title-font;
         }
 
         span {
@@ -64,5 +67,13 @@
             transform: scale(1.3);
             cursor: pointer;
         }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

@@ -1,0 +1,63 @@
+@import 'growAnimation.scss';
+
+%display-center {
+    display: flex;
+    justify-content: center;
+}
+
+.gallery{
+    @extend %display-center;
+    padding: 5%;
+}
+
+.card{
+    @extend %grow;
+    margin: 30px;
+    border-radius: 10px;
+    width: 25%;
+    box-shadow: 0 0 ($shadow-size*1.2) lighten($text-color, ($shadow-darkness/2));
+
+    img{
+        border-radius: 10px;
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    p{
+        @include dynamicFontSize($font-size-medium-mult);
+        font-style: oblique;
+        text-align: center;
+    }
+
+    button{
+        @extend .button-basic;
+        background-color: $theme-color;
+    }
+}
+
+.card:hover{
+    box-shadow: 0 0 ($shadow-size*1.2) lighten($text-color, ($shadow-darkness/2));
+    transition: .5s;
+}
+
+.card-button {
+    @extend %display-center;
+    padding-bottom: 10px;
+}
+
+.card-img {
+    @extend %display-center;
+}
+
+@media screen and (max-width: 992px) {
+    %display-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 50%;
+    }
+}
