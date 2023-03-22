@@ -17,3 +17,11 @@ main {
     padding-bottom: 10%;
 }
 
+.row > .card{
+    background-color: #9cbef5;
+    width: 80%;
+}
+
+.lead{
+    font-weight: 600;
+}
