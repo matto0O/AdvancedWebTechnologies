@@ -43,7 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Author deleteAuthor(final int id) {
         final Author authorToDelete = getAuthor(id);
-        this.authorRepo.remove(authorToDelete);
+        this.authorRepo.remove(id);
         return authorToDelete;
     }
 

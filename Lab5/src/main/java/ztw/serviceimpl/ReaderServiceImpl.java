@@ -49,7 +49,7 @@ public class ReaderServiceImpl implements ReaderService {
     @Override
     public Reader deleteReader(final int id) {
         final Reader readerToDelete = getReader(id);
-        this.readerRepo.remove(readerToDelete);
+        this.readerRepo.remove(id);
         return readerToDelete;
     }
 
