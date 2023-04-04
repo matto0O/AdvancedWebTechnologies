@@ -17,6 +17,10 @@ public class Reader {
 
     private List<Book> books;
 
+    public Reader() {
+        this.books = new ArrayList<>();
+    }
+
     public Reader(final String firstName, final String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
