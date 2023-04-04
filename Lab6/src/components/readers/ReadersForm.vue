@@ -3,82 +3,77 @@
     <form @submit.prevent="handleSubmit">
       <label>Imię</label>
       <input
-        v-model="author.firstName"
+        v-model="reader.firstName"
         type="text"
         :class="{ 'has-error': submitting && invalidFirstName }"
         @focus="clearStatus"
         @keypress="clearStatus"
-        :placeholder="author.firstName"
+        :placeholder="reader.firstName"
       />
       <label>Nazwisko</label>
       <input
-        v-model="author.lastName"
+        v-model="reader.lastName"
         type="text"
         :class="{ 'has-error': submitting && invalidLastName }"
         @focus="clearStatus"
-        :placeholder="author.lastName"
+        :placeholder="reader.lastName"
       />
       <p v-if="error && submitting" class="error-message">
         Proszę wypełnić wskazane pola formularza
       </p>
       <p v-if="success" class="success-message">Dane poprawnie zapisano</p>
-      <button class="btn btn-primary">Dodaj autora</button>
+      <button class="btn btn-primary">Dodaj czytelnika</button>
     </form>
   </div>
 </template>
 
   <script>
 export default {
-  name: "AuthorsForm",
+  name: "readersForm",
   data() {
     return {
       submitting: false,
       error: false,
       success: false,
-      author: {
+      reader: {
         firstName: "",
         lastName: "",
       },
     };
   },
   mounted() {
-    this.getAuthor();
+    this.getReader();
   },
   methods: {
     async postData() {
       try {
         const data = {
-          firstName: this.author.firstName,
-          lastName: this.author.lastName,
+          firstName: this.reader.firstName,
+          lastName: this.reader.lastName,
         };
-        const response = await fetch("http://localhost:8081/authors", {
+        const response = await fetch("http://localhost:8081/readers", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
         });
-        console.log(response.data);
-        this.$router.push({ name: "authors" });
+        console.log(await response.json());
+        this.$router.push({ name: "readers" });
       } catch (error) {
         console.error(error);
       }
     },
-    async getAuthor() {
-      fetch(`http://localhost:8081/authors/${this.authorId()}`)
-        .then((response) => {
+    async getReader() {
+      const response = await fetch(`http://localhost:8081/readers/${this.readerId()}`)
+      const data = await response.json()
           // Obsługa odpowiedzi serwera
-          console.log(response.data);
-          (this.author.id = response.data.id),
-            (this.author.firstName = response.data.firstName);
-          this.author.lastName = response.data.lastName;
-        })
-        .catch((error) => {
-          // Obsługa błędów
-          console.error(error);
-        });
+          console.log(data);
+          (this.reader.id = data.id),
+            (this.reader.firstName = data.firstName);
+          this.reader.lastName = data.lastName;
     },
-    authorId() {
+    readerId() {
       return this.$route.params.id;
     },
     handleSubmit() {
@@ -89,7 +84,7 @@ export default {
         return;
       }
       this.postData();
-      this.author = {
+      this.reader = {
         firstName: "",
         lastName: "",
       };
@@ -104,10 +99,10 @@ export default {
   },
   computed: {
     invalidFirstName() {
-      return this.author.firstName === "";
+      return this.reader.firstName === "";
     },
     invalidLastName() {
-      return this.author.lastName === "";
+      return this.reader.lastName === "";
     },
   },
 };

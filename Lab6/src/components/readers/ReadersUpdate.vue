@@ -3,82 +3,88 @@
     <form @submit.prevent="handleSubmit">
       <label>Imię</label>
       <input
-        v-model="author.firstName"
+        v-model="reader.firstName"
         type="text"
         :class="{ 'has-error': submitting && invalidFirstName }"
         @focus="clearStatus"
         @keypress="clearStatus"
-        :placeholder="author.firstName"
+        :placeholder="reader.firstName"
       />
       <label>Nazwisko</label>
       <input
-        v-model="author.lastName"
+        v-model="reader.lastName"
         type="text"
         :class="{ 'has-error': submitting && invalidLastName }"
         @focus="clearStatus"
-        :placeholder="author.lastName"
+        :placeholder="reader.lastName"
       />
       <p v-if="error && submitting" class="error-message">
         Proszę wypełnić wskazane pola formularza
       </p>
       <p v-if="success" class="success-message">Dane poprawnie zapisano</p>
-      <button class="btn btn-primary">Dodaj autora</button>
+      <button class="btn btn-primary">Zaaktualizuj dane czytelnika</button>
     </form>
   </div>
 </template>
 
   <script>
 export default {
-  name: "AuthorsForm",
+  name: "ReadersUpdate",
   data() {
     return {
       submitting: false,
       error: false,
       success: false,
-      author: {
+      reader: {
+        id: 0,
         firstName: "",
         lastName: "",
       },
     };
   },
   mounted() {
-    this.getAuthor();
+    this.getReader();
   },
   methods: {
-    async postData() {
+    async updateData() {
       try {
         const data = {
-          firstName: this.author.firstName,
-          lastName: this.author.lastName,
+          id: this.reader.id,
+          firstName: this.reader.firstName,
+          lastName: this.reader.lastName,
         };
-        const response = await fetch("http://localhost:8081/authors", {
-          method: "POST",
+        const response = await fetch("http://localhost:8081/readers", {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
         });
         console.log(response.data);
-        this.$router.push({ name: "authors" });
+        this.$router.push({ name: "readers" });
       } catch (error) {
         console.error(error);
       }
     },
-    async getAuthor() {
-      fetch(`http://localhost:8081/authors/${this.authorId()}`)
-        .then((response) => {
-          // Obsługa odpowiedzi serwera
-          console.log(response.data);
-          (this.author.id = response.data.id),
-            (this.author.firstName = response.data.firstName);
-          this.author.lastName = response.data.lastName;
-        })
-        .catch((error) => {
-          // Obsługa błędów
-          console.error(error);
-        });
+    async getReader() {
+      const response = await fetch(
+        `http://localhost:8081/readers/${this.readerId()}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+      // Obsługa odpowiedzi serwera
+      console.log(data.firstName);
+      this.reader.id = data.id,
+      this.reader.firstName = data.firstName;
+      this.reader.lastName = data.lastName;
     },
-    authorId() {
+    readerId() {
       return this.$route.params.id;
     },
     handleSubmit() {
@@ -88,8 +94,8 @@ export default {
         this.error = true;
         return;
       }
-      this.postData();
-      this.author = {
+      this.updateData();
+      this.reader = {
         firstName: "",
         lastName: "",
       };
@@ -104,10 +110,10 @@ export default {
   },
   computed: {
     invalidFirstName() {
-      return this.author.firstName === "";
+      return this.reader.firstName === "";
     },
     invalidLastName() {
-      return this.author.lastName === "";
+      return this.reader.lastName === "";
     },
   },
 };

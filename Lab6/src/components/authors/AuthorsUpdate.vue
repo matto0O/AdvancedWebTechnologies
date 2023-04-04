@@ -22,7 +22,7 @@
         Proszę wypełnić wskazane pola formularza
       </p>
       <p v-if="success" class="success-message">Dane poprawnie zapisano</p>
-      <button class="btn btn-primary">Dodaj autora</button>
+      <button class="btn btn-primary">Zaaktualizuj dane autora</button>
     </form>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
           firstName: this.author.firstName,
           lastName: this.author.lastName,
         };
-        const response = await fetch("http://localhost:8080/authors", {
+        const response = await fetch("http://localhost:8081/authors", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default {
     },
     async getAuthor() {
       const response = await fetch(
-        `http://localhost:8080/authors/${this.authorId()}`,
+        `http://localhost:8081/authors/${this.authorId()}`,
         {
           method: "GET",
           headers: {

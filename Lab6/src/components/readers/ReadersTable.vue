@@ -1,5 +1,5 @@
 <template>
-  <div id="authors-table" class="container">
+  <div id="readers-table" class="container">
     <table>
       <thead>
         <tr>
@@ -10,11 +10,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="author in authors" :key="author.id">
-          <td>{{ author.firstName }}</td>
-          <td>{{ author.lastName }}</td>
+        <tr v-for="reader in readers" :key="reader.id">
+          <td>{{ reader.firstName }}</td>
+          <td>{{ reader.lastName }}</td>
           <td>
-            <button class="btn btn-danger" @click="deleteAuthor(author.id)">
+            <button class="btn btn-danger" @click="deleteReader(reader.id)">
               Usuń
             </button>
           </td>
@@ -23,8 +23,8 @@
               class="btn btn-primary"
               @click="
                 this.$router.push({
-                  name: 'authorsUpdate',
-                  params: { id: author.id },
+                  name: 'readersUpdate',
+                  params: { id: reader.id },
                 })
               "
             >
@@ -34,43 +34,43 @@
         </tr>
       </tbody>
     </table>
-    <AuthorForm :authorsSource="authors" class="mt-5" />
+    <ReaderForm :readersSource="readers" class="mt-5" />
   </div>
 </template>
   
   <script>
-import AuthorForm from "@/components/authors/AuthorsForm.vue";
+import ReaderForm from "@/components/readers/ReadersForm.vue";
 export default {
-  name: "AuthorsTable",
-  components: { AuthorForm },
+  name: "readersTable",
+  components: { ReaderForm },
   data() {
     return {
-      authors: [],
+      readers: [],
     };
   },
   mounted() {
-    this.getAuthors();
+    this.getReaders();
   },
   methods: {
-    async getAuthors() {
+    async getReaders() {
       try {
-        const response = await fetch("http://localhost:8081/authors");
+        const response = await fetch("http://localhost:8081/readers");
         console.log(response);
         const data = await response.json();
-        this.authors = data;
+        this.readers = data;
       } catch (error) {
         console.error(error);
       }
     },
-    async deleteAuthor(itemId) {
+    async deleteReader(itemId) {
       const response = await fetch(
-        `http://localhost:8081/authors/${itemId}`,
+        `http://localhost:8081/readers/${itemId}`,
         {
           method: "DELETE",
         }
       );
       console.log(response.data);
-      this.authors = this.authors.filter((obj) => {
+      this.readers = this.readers.filter((obj) => {
         return obj.id !== itemId;
       });
     },
