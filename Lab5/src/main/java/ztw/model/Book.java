@@ -14,6 +14,8 @@ public class Book {
 
     private int readerId;
 
+    public Book(){}
+
     public Book(final String title, final Author author, final int pages) {
         this.title = title;
         this.author = author;

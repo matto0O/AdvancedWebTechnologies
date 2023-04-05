@@ -20,7 +20,7 @@
       <label>Autor</label>
       <select v-model="book.author">
         <option
-            v-for="a in authors" :key="a.id"
+            v-for="a in authors" :key="a.id" :value="a"
             @focus="clearStatus"
         >
           {{a.firstName + ' ' + a.lastName}}
@@ -49,6 +49,7 @@
         title: '',
         pages: '',
         author: {
+            id: 0,
             firstName: '',
             lastName: '',
         },
@@ -106,6 +107,7 @@
           title: '',
           pages: '',
           author: {
+          id: 0,
           firstName: '',
           lastName: '',
         },

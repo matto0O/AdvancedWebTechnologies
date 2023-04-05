@@ -19,7 +19,7 @@
       <label>Autor</label>
       <select v-model="book.author">
         <option
-            v-for="a in authors" :key="a.id">
+            v-for="a in authors" :key="a.id" :value="a">
           {{ a.firstName + ' ' + a.lastName }}
         </option>
       </select>
