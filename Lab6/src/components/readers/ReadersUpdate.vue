@@ -1,5 +1,6 @@
 <template>
   <div id="person-form" class="container">
+    <h1>Edytuj czytelnika</h1>
     <form @submit.prevent="handleSubmit">
       <label>Imię</label>
       <input

@@ -1,5 +1,6 @@
 <template>
     <div id="books-table" class="container">
+    <h1>Lista książek</h1>
       <table>
         <thead>
           <tr>

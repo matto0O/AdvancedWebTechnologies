@@ -1,5 +1,6 @@
 <template>
   <div id="authors-table" class="container">
+    <h1>Lista autorów</h1>
     <table>
       <thead>
         <tr>

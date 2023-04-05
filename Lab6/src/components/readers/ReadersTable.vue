@@ -1,5 +1,6 @@
 <template>
   <div id="readers-table" class="container">
+    <h1>Lista czytelników</h1>
     <table>
       <thead>
         <tr>
