@@ -13,15 +13,17 @@ import ReadersTable from "@/components/readers/ReadersTable.vue"
 import ReadersForm from "@/components/readers/ReadersForm.vue"
 import ReadersUpdate from "@/components/readers/ReadersUpdate.vue"
 
-import Start from "@/components/Start.vue";
+import BooksUpdate from "@/components/books/BooksUpdate.vue"
+import BooksForm from "@/components/books/BooksForm.vue"
+import BooksTable from "@/components/books/BooksTable.vue"
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {
-            path: '/',
-            component: Start,
-        },
+        // {
+        //     path: '/',
+        //     component: Start,
+        // },
         {
             path: '/readers',
             name: 'readers',
@@ -49,6 +51,20 @@ const router = createRouter({
             path: '/author-update/:id',
             name: 'authorsUpdate',
             component: AuthorsUpdate,
+        },
+        {
+            path: '/books-form',
+            component: BooksForm,
+        },
+        {
+            path: '/books',
+            name: 'books',
+            component: BooksTable,
+        },
+        {
+            path: '/books-update/:id',
+            name: 'booksUpdate',
+            component: BooksUpdate,
         },
     ]
 })
