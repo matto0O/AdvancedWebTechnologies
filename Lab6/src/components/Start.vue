@@ -5,51 +5,57 @@
       <table>
         <tr>
           <td>
-            <button class="btn btn-info btn-lg btn-block" 
-            @click="this.$router.push({name: 'readers',})">
-            Czytelnicy
+            <button
+              class="btn btn-info btn-lg btn-block"
+              @click="this.$router.push({ name: 'readers' })"
+            >
+              Czytelnicy
             </button>
           </td>
         </tr>
         <tr>
           <td>
-            <button class="btn btn-outline-info btn-lg btn-block" 
-            @click="this.$router.push({name: 'books',})">
-            Książki
+            <button
+              class="btn btn-outline-info btn-lg btn-block"
+              @click="this.$router.push({ name: 'books' })"
+            >
+              Książki
             </button>
-        </td>
+          </td>
         </tr>
         <tr>
           <td>
-            <button class="btn btn-info btn-lg btn-block" 
-            @click="this.$router.push({name: 'authors',})">
-            Autorzy
+            <button
+              class="btn btn-info btn-lg btn-block"
+              @click="this.$router.push({ name: 'authors' })"
+            >
+              Autorzy
             </button>
-        </td>
+          </td>
         </tr>
       </table>
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 export default {
   name: "StartScreen",
-  methods:{
-    goToAuthors(){
+  methods: {
+    goToAuthors() {
       this.$router.push({ name: "authors" });
     },
-    goToBooks(){
+    goToBooks() {
       this.$router.push({ name: "books" });
     },
-    goToReaders(){
+    goToReaders() {
       this.$router.push({ name: "readers" });
     },
-  }
+  },
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
 img {
   border-radius: 30px;
 }
@@ -63,7 +69,7 @@ td {
   text-align: center;
 }
 
-button{
-    width: 100%
+button {
+  width: 100%;
 }
 </style>
