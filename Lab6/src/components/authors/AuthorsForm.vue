@@ -10,6 +10,7 @@
         @focus="clearStatus"
         @keypress="clearStatus"
         :placeholder="author.firstName"
+        required
       />
       <label>Nazwisko</label>
       <input
@@ -18,6 +19,7 @@
         :class="{ 'has-error': submitting && invalidLastName }"
         @focus="clearStatus"
         :placeholder="author.lastName"
+        required
       />
       <p v-if="error && submitting" class="error-message">
         Proszę wypełnić wskazane pola formularza
@@ -28,7 +30,7 @@
   </div>
 </template>
 
-  <script>
+<script>
 export default {
   name: "AuthorsForm",
   data() {
@@ -113,7 +115,7 @@ export default {
   },
 };
 </script>
-  <style scoped>
+<style scoped>
 form {
   margin-bottom: 2rem;
 }

@@ -10,6 +10,7 @@
         @focus="clearStatus"
         @keypress="clearStatus"
         :placeholder="reader.firstName"
+        required
       />
       <label>Nazwisko</label>
       <input
@@ -18,6 +19,7 @@
         :class="{ 'has-error': submitting && invalidLastName }"
         @focus="clearStatus"
         :placeholder="reader.lastName"
+        required
       />
       <p v-if="error && submitting" class="error-message">
         Proszę wypełnić wskazane pola formularza
@@ -28,7 +30,7 @@
   </div>
 </template>
 
-  <script>
+<script>
 export default {
   name: "readersForm",
   data() {
@@ -66,13 +68,14 @@ export default {
       }
     },
     async getReader() {
-      const response = await fetch(`http://localhost:8081/readers/${this.readerId()}`)
-      const data = await response.json()
-          // Obsługa odpowiedzi serwera
-          console.log(data);
-          (this.reader.id = data.id),
-            (this.reader.firstName = data.firstName);
-          this.reader.lastName = data.lastName;
+      const response = await fetch(
+        `http://localhost:8081/readers/${this.readerId()}`
+      );
+      const data = await response.json();
+      // Obsługa odpowiedzi serwera
+      console.log(data);
+      (this.reader.id = data.id), (this.reader.firstName = data.firstName);
+      this.reader.lastName = data.lastName;
     },
     readerId() {
       return this.$route.params.id;
@@ -108,7 +111,7 @@ export default {
   },
 };
 </script>
-  <style scoped>
+<style scoped>
 form {
   margin-bottom: 2rem;
 }
