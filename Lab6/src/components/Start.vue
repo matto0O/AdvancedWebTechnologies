@@ -16,7 +16,7 @@
         <tr>
           <td>
             <button
-              class="btn btn-outline-info btn-lg btn-block"
+              class="btn btn-info btn-lg btn-block"
               @click="this.$router.push({ name: 'books' })"
             >
               Książki
