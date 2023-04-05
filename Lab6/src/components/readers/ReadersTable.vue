@@ -1,4 +1,9 @@
 <template>
+  <div class="go-back-container container">
+    <router-link to="/">
+      <button class="btn btn-info">Powrót</button>
+    </router-link>
+  </div>
   <div id="readers-table" class="container">
     <h1>Lista czytelników</h1>
     <table>
@@ -38,8 +43,8 @@
     <ReaderForm :readersSource="readers" class="mt-5" />
   </div>
 </template>
-  
-  <script>
+
+<script>
 import ReaderForm from "@/components/readers/ReadersForm.vue";
 export default {
   name: "readersTable",
@@ -64,12 +69,9 @@ export default {
       }
     },
     async deleteReader(itemId) {
-      const response = await fetch(
-        `http://localhost:8081/readers/${itemId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`http://localhost:8081/readers/${itemId}`, {
+        method: "DELETE",
+      });
       console.log(response.data);
       this.readers = this.readers.filter((obj) => {
         return obj.id !== itemId;
@@ -78,7 +80,10 @@ export default {
   },
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
+.go-back-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 </style>
-  
