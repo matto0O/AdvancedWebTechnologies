@@ -1,6 +1,6 @@
 <template>
   <div id="person-form" class="container">
-    <h1>EEdytuj dane autora</h1>
+    <h1>Edytuj dane autora</h1>
     <form @submit.prevent="handleSubmit">
       <label>Imię</label>
       <input

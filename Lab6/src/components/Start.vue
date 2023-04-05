@@ -5,21 +5,27 @@
       <table>
         <tr>
           <td>
-            <a href="http://localhost:3000/readers">
-            <button class="btn btn-info btn-lg btn-block">{{ "Czytelnicy" }}</button></a>
+            <button class="btn btn-info btn-lg btn-block" 
+            @click="this.$router.push({name: 'readers',})">
+            Czytelnicy
+            </button>
           </td>
         </tr>
         <tr>
           <td>
-            <a href="http://localhost:3000/authors">
-            <button class="btn btn-outline-info btn-lg btn-block">{{ "Autorzy" }}</button></a>
-          </td>
+            <button class="btn btn-outline-info btn-lg btn-block" 
+            @click="this.$router.push({name: 'books',})">
+            Książki
+            </button>
+        </td>
         </tr>
         <tr>
           <td>
-            <a href="http://localhost:3000/books">
-            <button class="btn btn-info btn-lg btn-block">{{ "Książki" }}</button></a>
-          </td>
+            <button class="btn btn-info btn-lg btn-block" 
+            @click="this.$router.push({name: 'authors',})">
+            Autorzy
+            </button>
+        </td>
         </tr>
       </table>
     </div>
@@ -29,6 +35,17 @@
   <script>
 export default {
   name: "StartScreen",
+  methods:{
+    goToAuthors(){
+      this.$router.push({ name: "authors" });
+    },
+    goToBooks(){
+      this.$router.push({ name: "books" });
+    },
+    goToReaders(){
+      this.$router.push({ name: "readers" });
+    },
+  }
 };
 </script>
   
