@@ -22,7 +22,7 @@
         Proszę wypełnić wskazane pola formularza
       </p>
       <p v-if="success" class="success-message">Dane poprawnie zapisano</p>
-      <button class="btn btn-primary">Zaaktualizuj dane autora</button>
+      <button class="btn btn-success">Zaaktualizuj dane autora</button>
     </form>
   </div>
 </template>

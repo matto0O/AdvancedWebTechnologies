@@ -24,7 +24,7 @@
             </td>
             <td>
               <button
-                class="btn btn-primary"
+                class="btn btn-warning"
                 @click="
                   this.$router.push({
                     name: 'booksUpdate',

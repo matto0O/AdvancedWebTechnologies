@@ -22,7 +22,7 @@
         Proszę wypełnić wskazane pola formularza
       </p>
       <p v-if="success" class="success-message">Dane poprawnie zapisano</p>
-      <button class="btn btn-primary">Dodaj czytelnika</button>
+      <button class="btn btn-success">Dodaj czytelnika</button>
     </form>
   </div>
 </template>

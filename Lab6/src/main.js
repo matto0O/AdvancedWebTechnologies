@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import {createRouter, createWebHistory} from "vue-router";
 import App from './App.vue'
 
-// import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import AuthorsForm from "@/components/authors/AuthorsForm.vue"
 import AuthorsTable from "@/components/authors/AuthorsTable.vue"
@@ -17,13 +17,15 @@ import BooksUpdate from "@/components/books/BooksUpdate.vue"
 import BooksForm from "@/components/books/BooksForm.vue"
 import BooksTable from "@/components/books/BooksTable.vue"
 
+import Start from "@/components/Start.vue"
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        // {
-        //     path: '/',
-        //     component: Start,
-        // },
+        {
+            path: '/',
+            component: Start,
+        },
         {
             path: '/readers',
             name: 'readers',

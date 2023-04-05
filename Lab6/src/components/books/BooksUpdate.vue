@@ -29,7 +29,7 @@
       <p v-if="success" class="success-message">
         Dane poprawnie zapisano
       </p>
-      <button class="btn btn-primary mt-3">Aktualizuj dane książki</button>
+      <button class="btn btn-success mt-3">Aktualizuj dane książki</button>
     </form>
   </div>
   </template>

@@ -32,7 +32,7 @@
       <p v-if="success" class="success-message">
         Dane poprawnie zapisano
       </p>
-      <button class="btn btn-primary mt-4">Dodaj książkę</button>
+      <button class="btn btn-success mt-4">Dodaj książkę</button>
     </form>
   </div>
   </template>
