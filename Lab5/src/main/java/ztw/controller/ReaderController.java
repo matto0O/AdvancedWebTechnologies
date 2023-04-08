@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/readers")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ReaderController {
 
     private ReaderService readerService;
