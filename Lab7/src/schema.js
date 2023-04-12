@@ -2,13 +2,18 @@ import { createSchema } from "graphql-yoga";
 import * as fs from "fs";
 import * as path from "path";
 import axios from "axios";
+import { MongoClient, ServerApiVersion } from "mongodb";
+import dotenv from "dotenv";
+
+var usersCached = getList("users");
+var todosCached = getList("todos");
 
 export const schema = createSchema({
   typeDefs: fs.readFileSync(path.join("src", "schema.graphql"), "utf-8"),
   resolvers: {
     Query: {
-      users: () => getRestUsersList(),
-      todos: () => getRestTodosList(),
+      users: () => getList("users"),
+      todos: () => getList("todos"),
       todo: (parent, args, context, info) =>
         getSingleTodoById(parent, args, context, info),
       user: (parent, args, context, info) =>
@@ -42,13 +47,14 @@ async function getRestUsersList() {
 }
 
 async function getSingleUserById(parent, args, context, info) {
-  const users = await getRestUsersList();
+  const users = await getList("users");
   return users.find((u) => u.id == args.id);
 }
 
 async function getUserByTodo(parent, args, context, info) {
-  const users = await getRestUsersList();
-  return users.find((u) => u.id == parent.user_id);
+  console.log("getUserByTodo");
+  // const users = await getUsersList();
+  return usersCached.find((u) => u.id == parent.user_id);
 }
 
 async function getRestTodosList() {
@@ -66,11 +72,37 @@ async function getRestTodosList() {
 }
 
 async function getSingleTodoById(parent, args, context, info) {
-  const todos = await getRestTodosList();
+  const todos = await getList("todos");
   return todos.find((t) => t.id == args.id);
 }
 
 async function getTodosByUser(parent, args, context, info) {
-  const todos = await getRestTodosList();
-  return todos.filter((t) => t.user_id == parent.id);
+  console.log("getTodosByUser");
+  // const todos = await getTodosList();
+  return todosCached.filter((t) => t.user_id == parent.id);
+}
+
+async function getList(listName) {
+  dotenv.config();
+  const uri = `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@userandtodos.ynd9lrr.mongodb.net/?retryWrites=true&w=majority`;
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+  });
+  client.connect();
+  const list = await client
+    .db("userandtodos")
+    .collection(listName)
+    .find({})
+    .toArray();
+  client.close();
+  if (listName == "todos") {
+    console.log("todos cached updated");
+    todosCached = list;
+  } else if (listName == "users") {
+    console.log("users cached updated");
+    usersCached = list;
+  }
+  return list;
 }
