@@ -2,8 +2,8 @@ import React from "react"
 import { graphql } from 'gatsby'
 
 const Setup = ({ data }) => {
-  console.log(data)
   const post = data.markdownRemark
+  console.log(post)
   return (
     <div>
       <h1>{post.frontmatter.title}</h1>
@@ -20,14 +20,26 @@ const Setup = ({ data }) => {
 }
 export default Setup;
 export const query = graphql`
-  query PostQuery($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        title
-        author
-        date
+query HomePageQuery {
+  allMarkdownRemark(sort: [{ frontmatter: { date: ASC } }]) {
+    totalCount
+    edges {
+      node {
+        frontmatter {
+          title
+          date
+          author
+          slug
+          thumb {
+            childImageSharp {
+                gatsbyImageData
+            }
+          }
+        }
+        excerpt
+        timeToRead
       }
     }
   }
+}
 `

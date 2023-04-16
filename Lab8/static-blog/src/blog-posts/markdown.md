@@ -3,6 +3,7 @@ title: "What is Markdown"
 date: "2020-08-01"
 slug: "markdown"
 author: "John Gruber"
+thumb: ../images/markdown-basics.png
 ---
 ## What is Markdown
 Markdown is a lightweight markup language that you can use to add formatting elem

@@ -2,6 +2,8 @@ import React from "react"
 import {Link} from "gatsby-link"
 import "./index.css"
 import { graphql } from 'gatsby'
+import {GatsbyImage, getImage } from 'gatsby-plugin-image'
+import Img from 'gatsby-image'
 
 const IndexPage = ({ data }) => {
   console.log(data)
@@ -12,7 +14,11 @@ const IndexPage = ({ data }) => {
           <Link
             to={node.frontmatter.slug}
             style={{ textDecoration: "none", color: "inherit" }}
-          >
+          > 
+          <p className="img">
+            
+          <GatsbyImage image={getImage(node.frontmatter.thumb)} alt={node.frontmatter.title} />
+          </p>
             <h3 className="title">{node.frontmatter.title}</h3>
           </Link>
           <p className="author">
@@ -40,6 +46,11 @@ query HomePageQuery {
           date
           author
           slug
+          thumb {
+            childImageSharp {
+                gatsbyImageData
+            }
+          }
         }
         excerpt
         timeToRead
