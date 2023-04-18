@@ -3,7 +3,6 @@ import {Link} from "gatsby-link"
 import "./index.css"
 import { graphql } from 'gatsby'
 import {GatsbyImage, getImage, StaticImage} from 'gatsby-plugin-image'
-import Img from 'gatsby-image'
 
 const IndexPage = ({ data }) => {
   console.log(data)
@@ -17,7 +16,20 @@ const IndexPage = ({ data }) => {
           > 
           <p className="img">
             
-          <GatsbyImage image={getImage(node.frontmatter.thumb)} alt={node.frontmatter.title} />
+          {node.frontmatter.thumb ? (
+            <GatsbyImage
+              image={getImage(node.frontmatter.thumb)}
+              alt={node.frontmatter.title}
+              width={500}
+            />
+          ) : (
+            <StaticImage
+              src="../images/example.png"
+              alt="example"
+              width={500}
+            />
+          )}
+
           </p>
             <h3 className="title">{node.frontmatter.title}</h3>
           </Link>

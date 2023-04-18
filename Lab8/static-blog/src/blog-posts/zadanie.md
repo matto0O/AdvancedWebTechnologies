@@ -3,7 +3,6 @@ title: "Laboratorium 8"
 date: "2020-07-01"
 slug: "zadanie"
 author: "Piotr Jóźwiak"
-thumb: ../images/zadanie.png
 ---
 ## Zadania
 Rozbudować blog z instrukcji bazowej o dodanie zdjęcia nagłówkowego dla każdego postu. Należy skorzystać z odpowiednich pluginów gatsby do ładowania statycznych obrazów (np. https://www.gatsbyjs.com/docs/how-to/images-and-media/using-gatsby-plugin-image/)

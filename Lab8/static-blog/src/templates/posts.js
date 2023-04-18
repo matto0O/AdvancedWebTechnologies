@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Img from 'gatsby-image'
+import {GatsbyImage, getImage, StaticImage} from 'gatsby-plugin-image'
 
 // const Setup = ({ data }) => {
 //   const post = data.markdownRemark
@@ -27,13 +27,25 @@ export default function Post({data}){
   const {title, author, date, thumb} = data.markdownRemark.frontmatter
   return (
     <Layout>
+    <div>
+    {thumb ? (
+            <GatsbyImage
+              image={getImage(thumb)}
+              alt={title}
+              width={500}
+            />
+          ) : (
+            <StaticImage
+              src="../images/example.png"
+              alt="example"
+              width={500}
+            />
+          )}
+    </div>
       <div>
         <h2>{title}</h2>
         <h3>{author}</h3>
         <h3>{date}</h3>
-        <div>
-          <Img fluid={thumb.childImageSharp.fluid}/>
-        </div>
       </div>
       <div dangerouslySetInnerHTML={{__html: html}}/>
     </Layout>
@@ -49,9 +61,7 @@ query q($slug: String) {
       title
       thumb {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData
         }
       }
     }
