@@ -5,10 +5,30 @@ import { graphql } from 'gatsby'
 import {GatsbyImage, getImage, StaticImage} from 'gatsby-plugin-image'
 
 const IndexPage = ({ data }) => {
+
   console.log(data)
+
+  console.log(data.allMarkdownRemark.edges[0])
+  
+  const [searchQuery, setSearchQuery] = React.useState('')
+  const filteredPosts = data.allMarkdownRemark.edges.filter(post => {
+    const title = post.node.frontmatter.title.toLowerCase()
+    const author = post.node.frontmatter.author.toLowerCase()
+    const query = searchQuery.toLowerCase()
+    return title.includes(query) || author.includes(query)
+  })
   return (
     <div>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      <div>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search for title or author"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+          />
+      </div>
+      {filteredPosts.map(({ node }) => (
         <div key={node.id} className="article-box">
           <Link
             to={node.frontmatter.slug}
