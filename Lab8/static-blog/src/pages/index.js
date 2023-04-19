@@ -19,14 +19,18 @@ const IndexPage = ({ data }) => {
   })
   return (
     <div>
-      <div>
-          <input
+      <div class="search">
+        
+        <h1> Search posts:
+          
+        <input
             type="text"
             className="form-control"
             placeholder="Search for title or author"
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
           />
+        </h1>
       </div>
       {filteredPosts.map(({ node }) => (
         <div key={node.id} className="article-box">
@@ -34,23 +38,24 @@ const IndexPage = ({ data }) => {
             to={node.frontmatter.slug}
             style={{ textDecoration: "none", color: "inherit" }}
           > 
-          <p className="img">
+          <div className="img">
             
           {node.frontmatter.thumb ? (
             <GatsbyImage
               image={getImage(node.frontmatter.thumb)}
               alt={node.frontmatter.title}
-              width={500}
+              height={200}
             />
           ) : (
             <StaticImage
               src="../images/example.png"
               alt="example"
-              width={500}
+              height={200}
+              
             />
           )}
 
-          </p>
+          </div>
             <h3 className="title">{node.frontmatter.title}</h3>
           </Link>
           <p className="author">
